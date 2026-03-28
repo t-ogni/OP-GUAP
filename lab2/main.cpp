@@ -1,11 +1,11 @@
-#include "Fraction.h"
+#include "MyDouble.h"
 
 int main() {
 
     // разные способы создания объектов
-    Fraction a;                 // ввод с клавиатуры
-    Fraction b(2, 50);          // с параметрами
-    Fraction c;                 
+    MyFraction a;               // ввод с клавиатуры
+    MyFraction b(2, 50);        // с параметрами
+    MyFraction c;
     c.init(1, 25);              // через метод
 
     // вывод
@@ -14,11 +14,11 @@ int main() {
     c.print();
 
     // операции
-    Fraction sum = a + b;
-    Fraction mult = b * c;
+    MyFraction sum = a + b;
+    MyFraction product = b * c;
 
     sum.print();
-    mult.print();
+    product.print();
 
     return 0;
 }
