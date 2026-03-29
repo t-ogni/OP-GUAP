@@ -1,24 +1,32 @@
-#include "MyDouble.h"
+#include "Fraction.h"
 
 int main() {
+    // Демонстрация всех конструкторов
+    Fraction f1;              // вызовет init()
+    Fraction f2(2, 5, 1);      // конструктор со списком инициализации
+    Fraction f3 = f2;         // конструктор копирования по умолчанию
 
-    // разные способы создания объектов
-    MyFraction a;               // ввод с клавиатуры
-    MyFraction b(2, 50);        // с параметрами
-    MyFraction c;
-    c.init(1, 25);              // через метод
+    cout << "\nПервое число: ";
+    f1.display();
+    cout << "Второе число: ";
+    f2.display();
+    cout << "Третье число (копия второго): ";
+    f3.display();
 
-    // вывод
-    a.print();
-    b.print();
-    c.print();
 
-    // операции
-    MyFraction sum = a + b;
-    MyFraction product = b * c;
+    f3 = f3 * Fraction(2,0,0);
+    cout << "\nf3 = f3 * 2 = ";
+    f3.display();
+    
+    // Демонстрация сложения
+    Fraction sum = f1 + f2;
+    cout << "\nСумма f1 + f2 = ";
+    sum.display();
 
-    sum.print();
-    product.print();
+    // Демонстрация умножения
+    Fraction mul = f1 * f3;
+    cout << "Произведение f1 * f3 = ";
+    mul.display();
 
     return 0;
 }
