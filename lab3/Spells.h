@@ -20,6 +20,16 @@ public:
     void info() override { Magic::info(); std::cout << ", Объем: " << volume << "\n"; }
 };
 
+class Stone : public PhysicsObject {
+public:
+    Stone(std::string name, double w) : PhysicsObject(name, w) {}
+    void cast() override { std::cout << "Вызван камень (weight = " << weight << ")!\n"; }
+    void info() override { 
+        PhysicsObject::info(); 
+        std::cout << ", камень без атрибутов\n"; 
+    }
+};
+
 // Множественное наследование
 class Steam : public Fire, public Water {
 public:
@@ -34,6 +44,24 @@ public:
         std::cout << "[Комбинированное заклинание]\n";
         Fire::info();
         Water::info();
+    }
+};
+
+// --- 2 Уровень: Множественное наследование ---
+// Комбинация: Лава (Огонь + Камень)
+class Lava : public Fire, public Stone {
+public:
+    Lava(std::string name, double w, int mana, int temp) : Fire(name, mana, temp), Stone(name, w) {}
+    
+    void cast() override {
+        std::cout << "Вызвана лава! ";
+        Fire::cast(); 
+    }
+
+    void info() override {
+        std::cout << "[Комбинированный объект (Огонь+Камень)]\n";
+        Fire::info(); 
+        Stone::info(); 
     }
 };
 #endif
